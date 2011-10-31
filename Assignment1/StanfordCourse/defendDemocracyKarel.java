@@ -46,7 +46,7 @@ private void cleanBeepersSouth() {
  * if there are any there. 
  * Pre-condition: Karel is in the middle of a rectangle with no 
  * middle beeper
- * Post-condition: Karel returns to middle
+ * Post-condition: Karel returns to middle facing East
  */
 private void cleanBeepersNorth() {
 	move();
