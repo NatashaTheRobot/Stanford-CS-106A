@@ -16,8 +16,11 @@ public class DrawFace extends GraphicsProgram {
 	
 	public void run() {
 		buildHead();
-		buildLeftEye();
-		buildRightEye();
+		double EyeY = getHeight()/2 - head_height/4 - eye_radius;
+		double leftEyeX = getWidth()/2 - head_width/4 - eye_radius;
+		double rightEyeX = getWidth()/2 + head_width/4 - eye_radius;
+		buildEye(leftEyeX, EyeY);
+		buildEye(rightEyeX, EyeY);
 		buildMouth();
 	}
 	private void buildHead() {
@@ -28,24 +31,15 @@ public class DrawFace extends GraphicsProgram {
 		face.setFilled(true);
 		face.setFillColor(Color.GRAY);
 	}
-	private void buildLeftEye() {
-		double startingWidth = getWidth()/2 - head_width/4 - eye_radius/2;
-		double startingHeight = getHeight()/2 - head_height/4 - eye_radius/2;
-		GOval leftEye = new GOval (startingWidth, startingHeight, eye_radius, eye_radius);
-		add(leftEye);
-		leftEye.setColor(Color.YELLOW);
-		leftEye.setFilled(true);
-		leftEye.setFillColor(Color.YELLOW);
+	
+	private void buildEye(double x, double y) {
+		GOval Eye = new GOval (x, y, eye_radius*2, eye_radius*2);
+		Eye.setColor(Color.YELLOW);
+		Eye.setFilled(true);
+		Eye.setFillColor(Color.YELLOW);
+		add(Eye);
 	}
-	private void buildRightEye() {
-		double startingWidth = getWidth()/2 + head_width/4 - eye_radius/2;
-		double startingHeight = getHeight()/2 - head_height/4 - eye_radius/2;
-		GOval rightEye = new GOval (startingWidth, startingHeight, eye_radius, eye_radius);
-		add(rightEye);
-		rightEye.setColor(Color.YELLOW);
-		rightEye.setFilled(true);
-		rightEye.setFillColor(Color.YELLOW);
-	}
+	
 	private void buildMouth() {
 		double startingWidth = getWidth()/2 - mouth_width/2;
 		double startingHeight = getHeight()/2 + head_height/4 - mouth_height/2;
