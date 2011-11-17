@@ -64,7 +64,7 @@ public class Breakout extends GraphicsProgram {
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 	
 /** Animation delay or paust time between ball moves */	
-	private static final int DELAY = 10;
+	private static final int DELAY = 8;
 
 /* Method: run() */
 /** Runs the Breakout program. */
