@@ -91,13 +91,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	 * The player selects the category for the dice. 
 	 * The player cannot select a category that he/she already chose in a previous turn.*/
 	private void selectCategory(int playerNumber) {
+		display.printMessage("Select a category for this roll");
 		while(true) {
-			display.printMessage("Select a category for this roll");
 			category = display.waitForPlayerToSelectCategory();
 			if(selectedCategories[playerNumber][category] == 0) {
 				calculateCategoryScore(playerNumber);
 				break;
 			}
+			display.printMessage("You have already selected this category. Please select another one.");
 		}	
 	}
 	
