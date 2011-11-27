@@ -9,11 +9,13 @@ import acm.program.*;
 
 public class FlightPlanner extends ConsoleProgram {
 	
-	private FlightDB flights;
-	private ArrayList<String> enteredCities = new ArrayList<String>();
-	private String firstCity;
+	/* Private instance variables */
+	private FlightDB flights; //creates a new database
+	private ArrayList<String> enteredCities = new ArrayList<String>(); //keeps track of entered cities
+	private String firstCity; //keeps track of the first city entered by the user
 	
 	public void init() {
+		//passes the text file to the database to read and parse
 		flights = new FlightDB("flights.txt");
 	}
 	
@@ -24,6 +26,7 @@ public class FlightPlanner extends ConsoleProgram {
 		printFinalRoute();
 	}
 	
+	/* Welcomes the user */
 	private void welcome() {
 		println("Welcome to Flight Planner");
 		println("Here is a list of all the cities in our database");
@@ -34,6 +37,8 @@ public class FlightPlanner extends ConsoleProgram {
 		println("Let's plan a round-trip route!");
 	}
 	
+	/* asks the user for the starting city and prints out 
+	 * all the possible destination cities for that city */
 	private void askForFistCity() {
 		while(true) {
 			firstCity = readLine("Enter the starting city: ");
@@ -57,6 +62,9 @@ public class FlightPlanner extends ConsoleProgram {
 			}
 	}
 	
+	/* asks the user for the cities he/she wants to fly to, 
+	 * and prints out possible destination cities for each city
+	 * until the user enters the starting city */
 	private void askForMoreCities() {
 		String city = firstCity;
 		String lastCity = city;
@@ -82,6 +90,7 @@ public class FlightPlanner extends ConsoleProgram {
 		}
 	}
 	
+	/* prints out the chosen route */
 	private void printFinalRoute() {
 		println("The route you've chosen is");
 		String route = enteredCities.get(0);

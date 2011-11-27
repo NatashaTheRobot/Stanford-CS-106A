@@ -23,6 +23,7 @@ public class FlightDB {
 		readFile(filename);
 	}
 	
+	//Reads the file with the flight routes
 	private void readFile(String filename) {
 		try{
 			BufferedReader rd = new BufferedReader(new FileReader(filename));
@@ -46,6 +47,7 @@ public class FlightDB {
 		}
 	}
 	
+	//parses each line in the flight routes file into the from city and the destination
 	private void parse(String line) {
 		//name of the from City
 		int fromCityEnd = line.indexOf(" ->");
@@ -56,10 +58,12 @@ public class FlightDB {
 		destination = line.substring(desinationStart);
 	}
 	
+	//returns all the cities the airline flies from
 	public Iterator<String> getCities() {
 		return flightRoutes.keySet().iterator();
 	}
 	
+	//finds all the cities a person can fly to from a selected city
 	public Iterator<String> findRoute(String fromCity) {
 		if(flightRoutes.containsKey(fromCity)) {
 			Iterator<String> it = flightRoutes.get(fromCity).getDestinations();
@@ -70,6 +74,7 @@ public class FlightDB {
 		}
 	}
 	
+	//checks to see if the from city is in the database
 	public boolean ContainsKey(String fromCity) {
 		if(flightRoutes.containsKey(fromCity) == true) {
 			return true;
